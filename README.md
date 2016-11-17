@@ -43,7 +43,7 @@ The projec is composed by 3 main classes:
     use carlosV2\Pocket\IndexedPocket;
     
     $pocket = new IndexedPocket('/path/to/the/file');
-    $pocket->add('key1', a');
+    $pocket->add('key1', 'a');
     $pocket->add('key2', 1);
     $pocket->add('key3', true);
     
