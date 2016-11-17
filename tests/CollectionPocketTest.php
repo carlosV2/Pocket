@@ -25,7 +25,7 @@ class CollectionPocketTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function itReturnsAnEmptyArray()
     {
-        $this->assertEquals([], (new CollectionPocket($this->path))->getAll());
+        $this->assertEquals([], (new CollectionPocket($this->path))->getValues());
     }
 
     /** @test */
@@ -36,7 +36,7 @@ class CollectionPocketTest extends \PHPUnit_Framework_TestCase
         $pocket->add(2);
         $pocket->add(false);
 
-        $this->assertEquals(['a', 2, false], $pocket->getAll());
+        $this->assertEquals(['a', 2, false], $pocket->getValues());
     }
 
     /** @test */
@@ -60,6 +60,6 @@ class CollectionPocketTest extends \PHPUnit_Framework_TestCase
         $pocket->add(false);
 
         $pocket->remove(2);
-        $this->assertEquals(['a', false], $pocket->getAll());
+        $this->assertEquals(['a', false], $pocket->getValues());
     }
 }

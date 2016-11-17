@@ -18,8 +18,8 @@ final class IndexedPocket
     }
 
     /**
-     * @param string $key
-     * @param mixed  $value
+     * @param mixed $key
+     * @param mixed $value
      */
     public function add($key, $value)
     {
@@ -31,9 +31,17 @@ final class IndexedPocket
     /**
      * @return mixed[]
      */
-    public function getAll()
+    public function getValues()
     {
         return array_values($this->pocket->load());
+    }
+
+    /**
+     * @return mixed[]
+     */
+    public function getKeys()
+    {
+        return array_keys($this->pocket->load());
     }
 
     /**
@@ -43,11 +51,11 @@ final class IndexedPocket
      */
     public function has($value)
     {
-        return in_array($value, $this->getAll(), true);
+        return in_array($value, $this->getValues(), true);
     }
 
     /**
-     * @param string $key
+     * @param mixed $key
      *
      * @return bool
      */
@@ -57,7 +65,7 @@ final class IndexedPocket
     }
 
     /**
-     * @param string $key
+     * @param mixed $key
      *
      * @return mixed
      */
@@ -67,7 +75,7 @@ final class IndexedPocket
     }
 
     /**
-     * @param string $key
+     * @param mixed $key
      */
     public function removeByKey($key)
     {

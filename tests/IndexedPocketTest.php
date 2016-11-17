@@ -25,7 +25,7 @@ class IndexedPocketTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function itReturnsAnEmptyArray()
     {
-        $this->assertEquals([], (new IndexedPocket($this->path))->getAll());
+        $this->assertEquals([], (new IndexedPocket($this->path))->getValues());
     }
 
     /** @test */
@@ -36,7 +36,18 @@ class IndexedPocketTest extends \PHPUnit_Framework_TestCase
         $pocket->add('integer', 2);
         $pocket->add('boolean', false);
 
-        $this->assertEquals(['a', 2, false], $pocket->getAll());
+        $this->assertEquals(['a', 2, false], $pocket->getValues());
+    }
+
+    /** @test */
+    public function itReturnsAnArrayWithTheAddedKeys()
+    {
+        $pocket = new IndexedPocket($this->path);
+        $pocket->add('string', 'a');
+        $pocket->add('integer', 2);
+        $pocket->add('boolean', false);
+
+        $this->assertEquals(['string', 'integer', 'boolean'], $pocket->getKeys());
     }
 
     /** @test */
@@ -84,6 +95,6 @@ class IndexedPocketTest extends \PHPUnit_Framework_TestCase
         $pocket->add('boolean', false);
 
         $pocket->removeByKey('integer');
-        $this->assertEquals(['a', false], $pocket->getAll());
+        $this->assertEquals(['a', false], $pocket->getValues());
     }
 }

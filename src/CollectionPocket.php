@@ -40,7 +40,7 @@ final class CollectionPocket
     /**
      * @return mixed[]
      */
-    public function getAll()
+    public function getValues()
     {
         return $this->pocket->load();
     }
